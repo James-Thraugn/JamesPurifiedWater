@@ -4,7 +4,7 @@ import java.util.Locale;
 
 public enum Waterlikes {
     
-    PURIFIED_WATER(-12618011);
+    PURIFIED_WATER(-11884315);
     
     private final int color;
     private final String id;
