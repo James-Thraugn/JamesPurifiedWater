@@ -1,4 +1,4 @@
-package net.mrhitech.purified_water.item;
+package net.mrhitech.purified_water.common.item;
 
 import net.dries007.tfc.util.Helpers;
 import net.minecraft.world.item.BucketItem;

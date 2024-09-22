@@ -14,10 +14,12 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.mrhitech.purified_water.client.ClientEventHandler;
 import net.mrhitech.purified_water.common.block.PurifiedWaterBlocks;
 import net.mrhitech.purified_water.common.fluids.PurifiedWaterFluids;
-import net.mrhitech.purified_water.item.PurifiedWaterItems;
+import net.mrhitech.purified_water.common.item.PurifiedWaterItems;
 import org.slf4j.Logger;
 
 
@@ -39,6 +41,9 @@ public class PurifiedWater
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            ClientEventHandler.init();
+        }
         
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

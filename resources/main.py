@@ -1,11 +1,27 @@
 from alcs_n_russians_funcs import *
-import mcresources
+from mcresources import ResourceManager
 
 SIMPLE_FLUIDS = ('purified_water',)
 
-rm = mcresources.ResourceManager('purified_water')
+rm = ResourceManager('purified_water')
+tfc_rm = ResourceManager('tfc')
 
+def disable_data(rm: ResourceManager, name_parts: ResourceIdentifier):
+    # noinspection PyTypeChecker
+    rm.data(name_parts, {
+            'group': None,
+            **{},
+            'conditions': utils.recipe_condition('forge:false')})
 
+def generate_drinkables():
+    print('\tGenerating drinkables...')
+    drinkable(tfc_rm, ('fresh_water'), ['minecraft:water', 'tfc:river_water'], thirst=10, effects=[{'type': 'minecraft:nausea', 'duration': 200, 'chance': 0.1}, {'type': 'minecraft:poison', 'duration': 200, 'chance': 0.1}])
+    drinkable(rm, ('purified_water'), 'purified_water:purified_water', thirst=10)
+
+    
+def generate_data():
+    print('Generating data...')
+    generate_drinkables()
 
 def generate_item_models():
     print('\tGenrating item models...')
@@ -35,10 +51,19 @@ def generate_recipes():
     generate_pot_recipes()
     generate_vat_recipes()
 
+def generate_fluid_tags():
+    print('\tGenerating fluid tags...')
+    rm.fluid_tag(('tfc:drinkables'), 'purified_water:purified_water')
+
+def generate_tags():
+    print('Generating tags...')
+    generate_fluid_tags()
+
 def main():
+    generate_data()
     generate_models()
     generate_recipes()
-    
+    generate_tags()
     
     rm.flush()
     

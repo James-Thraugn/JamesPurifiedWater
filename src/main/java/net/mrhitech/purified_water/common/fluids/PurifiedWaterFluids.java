@@ -15,7 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.mrhitech.purified_water.PurifiedWater;
 import net.mrhitech.purified_water.common.Waterlikes;
 import net.mrhitech.purified_water.common.block.PurifiedWaterBlocks;
-import net.mrhitech.purified_water.item.PurifiedWaterItems;
+import net.mrhitech.purified_water.common.item.PurifiedWaterItems;
 
 
 import java.util.Map;
