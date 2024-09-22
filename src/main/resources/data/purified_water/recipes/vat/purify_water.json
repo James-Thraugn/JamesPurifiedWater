@@ -1,0 +1,20 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "firmalife:vat",
+  "input_item": {
+    "ingredient": {
+      "item": "minecraft:stick"
+    }
+  },
+  "input_fluid": {
+    "ingredient": "minecraft:water",
+    "amount": 1000
+  },
+  "output_item": {
+    "item": "minecraft:stick"
+  },
+  "output_fluid": {
+    "fluid": "purified_water:purified_water",
+    "amount": 1000
+  }
+}

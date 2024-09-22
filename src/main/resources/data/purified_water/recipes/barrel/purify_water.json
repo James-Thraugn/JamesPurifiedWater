@@ -1,0 +1,18 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:barrel_sealed",
+  "input_item": {
+    "ingredient": {
+      "item": "tfc:powder/charcoal"
+    }
+  },
+  "input_fluid": {
+    "ingredient": "minecraft:water",
+    "amount": 500
+  },
+  "output_fluid": {
+    "fluid": "purified_water:purified_water",
+    "amount": 500
+  },
+  "duration": 24000
+}

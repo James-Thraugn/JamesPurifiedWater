@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "block.purified_water.fluid.purified_water": "Purified Water",
+  "item.purified_water.bucket.purified_water": "Purified Water Bucket",
+  "fluid.purified_water.purified_water": "Purified Water",
+  "tfc.recipe.barrel.purified_water.barrel.purify_water": "Purifying Water"
+}
