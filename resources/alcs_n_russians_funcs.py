@@ -2123,7 +2123,7 @@ def block_and_item_tag(rm: ResourceManager, name_parts: utils.ResourceIdentifier
     rm.block_tag(name_parts, *values, replace=replace)
     rm.item_tag(name_parts, *values, replace=replace)
     
-def simple_pot_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredients: Json, fluid: str, output_fluid: str = None, output_items: Json = None, duration: int = 2000, temp: int = 300):
+def simple_pot_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredients: Json, fluid: str, output_fluid: str = None, output_items: Json = None, duration: int = 2000, temp: int = 300, conditions: Json = None):
     rm.recipe(('pot', name_parts), 'tfc:pot', {
         'ingredients': ingredients,
         'fluid_ingredient': fluid_stack_ingredient(fluid),
@@ -2131,7 +2131,7 @@ def simple_pot_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier,
         'temperature': temp,
         'fluid_output': fluid_stack(output_fluid) if output_fluid is not None else None,
         'item_output': [utils.item_stack(item) for item in output_items] if output_items is not None else None
-    })
+    }, conditions=conditions)
 
 
 def disable_recipe(rm: ResourceManager, name_parts: ResourceIdentifier):

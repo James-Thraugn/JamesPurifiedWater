@@ -13,6 +13,16 @@ def disable_data(rm: ResourceManager, name_parts: ResourceIdentifier):
             **{},
             'conditions': utils.recipe_condition('forge:false')})
 
+def scalable_pot_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, fluid: str, output_fluid: str = None, output_items: Json = None, duration: int = 2000, temp: int = 300, conditions=None):
+    rm.recipe(('pot', name_parts), 'artisanal:scalable_pot', {
+        'ingredients': [],
+        'fluid_ingredient': fluid_stack_ingredient(fluid),
+        'duration': duration,
+        'temperature': temp,
+        'fluid_output': fluid_stack(output_fluid) if output_fluid is not None else None,
+        'item_output': [utils.item_stack(item) for item in output_items] if output_items is not None else None
+    }, conditions=conditions)
+
 def generate_drinkables():
     print('\tGenerating drinkables...')
     drinkable(tfc_rm, ('fresh_water'), ['minecraft:water', 'tfc:river_water'], thirst=10, effects=[{'type': 'minecraft:nausea', 'duration': 200, 'chance': 0.1}, {'type': 'minecraft:poison', 'duration': 200, 'chance': 0.1}])
@@ -38,8 +48,8 @@ def generate_barrel_recipes():
     
 def generate_pot_recipes():
     print('\tGenerating pot recipes...')
-    simple_pot_recipe(rm, ('purify_water'), [], '1000 minecraft:water', '1000 purified_water:purified_water', None, 2000, 300)
-    
+    simple_pot_recipe(rm, ('purify_water'), [], '1000 minecraft:water', '1000 purified_water:purified_water', None, 2000, 300, conditions=[{'type': 'forge:not', 'value': {'type': 'forge:mod_loaded', 'modid': 'artisanal'}}])
+    scalable_pot_recipe(rm, ('purify_water_scalable'), '1 minecraft:water', '1 purified_water:purified_water', None, 2000, 300, conditions={'type': 'forge:mod_loaded', 'modid': 'artisanal'})
     
 def generate_vat_recipes():
     print('\tGenerating vat recipes...')
