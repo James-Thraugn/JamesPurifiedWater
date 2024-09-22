@@ -15,6 +15,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.mrhitech.purified_water.common.block.PurifiedWaterBlocks;
+import net.mrhitech.purified_water.common.fluids.PurifiedWaterFluids;
 import net.mrhitech.purified_water.item.PurifiedWaterItems;
 import org.slf4j.Logger;
 
@@ -32,15 +34,15 @@ public class PurifiedWater
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         PurifiedWaterItems.register(modEventBus);
-
+        PurifiedWaterBlocks.register(modEventBus);
+        PurifiedWaterFluids.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-
-
+        
+        
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-
+        
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
     }
@@ -56,7 +58,7 @@ public class PurifiedWater
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-
+            
             LOGGER.info("Hello world");
         }
     }
