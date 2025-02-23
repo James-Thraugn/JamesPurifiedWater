@@ -9,12 +9,12 @@
     {
       "type": "minecraft:nausea",
       "duration": 200,
-      "chance": 0.1
+      "chance": 0.95
     },
     {
       "type": "minecraft:poison",
       "duration": 200,
-      "chance": 0.1
+      "chance": 0.85
     }
   ]
 }
